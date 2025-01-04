@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { chromium } = require('playwright');
+const { chromium } = require('playwright-chromium');
 const sendEmail = require('./emailService');
 
 const getAvailabilityUrls = async () => {
