@@ -4,7 +4,9 @@
   "description": "Monitor",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx playwright install-deps && echo 'Build complete!'",
+    "start": "node index.js",
+    "test": "jest"
   },
   "author": "jinjo",
   "license": "ISC",
