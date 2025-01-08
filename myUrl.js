@@ -75,17 +75,24 @@ const checkAva = async (url, newDate) => {
                 Math.max(0, match.index - 300),
                 Math.min(avaHTML.length, match.index + 300)
             );
+            const matchDate=context.match(new RegExp(`\\b${newDate.replace(/\//g, '\\/')}\\b`))
+            if (matchDate===newDate) {
+                return false
+            }
+            
             const message = `有票了！上下文：\n${context}`;
 
             const ticketMatch = context.match(/<br>\s*(\d+)\s*Available/);
             if (ticketMatch) {
                 const availableTickets = parseInt(ticketMatch[1], 10);
                 if (availableTickets >= 5) {
+                    const message = `${newDate} 有票了！\n有限的票：${availableTickets}`;
                     sendEmail('Puffing Billy Tickets Available!', message);
                     return true; // 直接返回 true，退出函数
                 }
             }
             if (match[0] === 'Book Now') {
+                const message = `${newDate} 有票了！\n 很多票`;
                 sendEmail('Puffing Billy Tickets Available!', message);
                 return true; // 直接返回 true，退出函数
             }

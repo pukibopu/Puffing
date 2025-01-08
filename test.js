@@ -1,8 +1,7 @@
 const { checkAva,getAvailabilityUrls,modifyUrl } = require("./myUrl");
 const datesToQuery = [
-    '04/02/2025',
-    '02/02/2025',
-    '03/02/2025',
+    '27/02/2025',
+    '28/02/2025',
 ];
 
 (async function monitorTickets() {
