@@ -43,10 +43,10 @@ const checkAva = async (url, newDate) => {
         'X-Requested-With': 'XMLHttpRequest',
     };
 
-    const cookies = {
-        currentBrandWAFApplicationBookingCat: 'PUFFING%20BILLY',
-        oidToken: '12594595.467180---EKKRegvApR6n5FLpf6Rj',
-    };
+    // const cookies = {
+    //     currentBrandWAFApplicationBookingCat: 'PUFFING%20BILLY',
+    //     oidToken: '12594595.467180---EKKRegvApR6n5FLpf6Rj',
+    // };
 
     const data = new URLSearchParams({
         newDate, // 替换为你需要的日期
@@ -57,7 +57,7 @@ const checkAva = async (url, newDate) => {
         const res = await axios.post(url, data.toString(), {
             headers,
             withCredentials: true,
-            cookies
+            // cookies
         })
         const htmlContent = res.data;
         const currentTime = new Date().toISOString();
@@ -66,6 +66,7 @@ const checkAva = async (url, newDate) => {
             console.log(`${currentTime} - No availability data found.`);
             return false;
         }
+        
         const matches = [...avaHTML.matchAll(/Limited Seats|Book Now/g)];
 
 
@@ -80,7 +81,6 @@ const checkAva = async (url, newDate) => {
                 return false
             }
             
-            const message = `有票了！上下文：\n${context}`;
 
             const ticketMatch = context.match(/<br>\s*(\d+)\s*Available/);
             if (ticketMatch) {

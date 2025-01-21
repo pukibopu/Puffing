@@ -1,8 +1,9 @@
 const { checkAva,getAvailabilityUrls,modifyUrl } = require("./myUrl");
 const datesToQuery = [
-    '04/02/2025',
-    '02/02/2025',
-    '03/02/2025',
+    '21/01/2025',
+    '01/02/2025',
+    '20/01/2025',
+    '06/02/2025'
 ];
 
 (async function monitorTickets() {
@@ -49,6 +50,6 @@ const datesToQuery = [
 
         // 每 60 秒检查一次
         console.log("Waiting for 60 seconds before the next check...");
-        await new Promise((resolve) => setTimeout(resolve, 60000));
+        await new Promise((resolve) => setTimeout(resolve,10000));
     }
 })();
